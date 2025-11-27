@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber"
 import { Environment, Gltf, OrbitControls, PerspectiveCamera } from "@react-three/drei"
 import { createXRStore, XR } from "@react-three/xr"
-import { Cube } from "./lib/cube";
+import Scene from "./lib/scene";
 
 const xrstore = createXRStore({
 
@@ -14,12 +14,8 @@ function App() {
       <Canvas 
         style={{width : "100vw", height:"100vh"}}
       >
-        <color attach={"background"} args={[0x808080]} />
-        <PerspectiveCamera makeDefault position={[0,1.6,2]} fov={75} />
-        <Environment files="/river_alcove_4k.exr" background backgroundIntensity={0.2} /> 
-        <Cube x="0" y="1" z="-5"/>
-        <Cube x="0" y="1" z="5"/>
-        <XR store={xrstore}/>
+        <Scene/>
+        <XR store={xrstore} />
       </Canvas>
 
       <div
